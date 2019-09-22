@@ -1,39 +1,26 @@
-import React from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { incrementCount } from '../store/actions/count';
+import React from 'react';
+import useCountState from '../hooks/queries/useCountState';
+import useCountCommands from '../hooks/commands/useCountCommands';
 
-const mapStateToProps = (state) => ({
-  count: state.count,
-});
+function Count() {
+  const count = useCountState();
+  const { incrementCount } = useCountCommands();
 
-const mapDispatchToProps = (dispatch) => ({
-  incrementCount: () => dispatch(incrementCount())
-});
+  return (
+    <div>
+      <p>Current count is <span style={{ color: 'red' }}>{ count }</span></p>
 
-class Count extends React.Component {
-  render() {
-    const { 
-      count,
-      incrementCount
-     } = this.props;
+      <button
+        onClick={incrementCount}
+      >
+        Increment 
+      </button>
 
-     return (
-       <div>
-
-        <p>Current count is <span style={{ color: 'red' }}>{ count }</span></p>
-
-        <button
-          onClick={incrementCount}
-        >
-          Increment 
-        </button>
-
-        <br />
-        <Link to="/display">Next</Link>
-      </div>
-     )
-  }
+      <br />
+      <Link to="/display">Next</Link>
+    </div>
+  )
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Count);
+export default Count;

@@ -8,7 +8,7 @@ const nonDispatchableAction = (payload) => ({
 
 function ReduxHookComponent(props) {
   const someStateValue = useSelector((state) => state.someStateValue);
-  const { dispatch } = useDispatch();
+  const dispatch = useDispatch();
 
   // Maybe some function that dispatches an action...
   const someFn = (payload) => {

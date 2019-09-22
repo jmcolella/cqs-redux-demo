@@ -1,24 +1,15 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import useCountState from '../hooks/queries/useCountState';
 
-const mapStateToProps = (state) => ({
-  count: state.count,
-});
+const DisplayCount = () => {
+  const count = useCountState();
 
+  return (
+    <div>
 
-class DisplayCount extends React.Component {
-  render() {
-    const { 
-      count,
-     } = this.props;
-
-     return (
-       <div>
-
-        <p>Current count is still <span style={{ color: 'red' }}>{ count }</span></p>
-      </div>
-     )
-  }
+      <p>Current count is still <span style={{ color: 'red' }}>{ count }</span></p>
+    </div>
+  );
 };
 
-export default connect(mapStateToProps)(DisplayCount);
+export default DisplayCount;
