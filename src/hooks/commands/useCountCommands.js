@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import {
-  incrementCount
+  incrementCount,
+  decrementCount,
 } from '../../store/actions/count';
 
 const useCountCommands = () => {
@@ -8,6 +9,7 @@ const useCountCommands = () => {
 
   return {
     incrementCount: () => dispatch(incrementCount()),
+    decrementCount: () => dispatch(decrementCount())
   };
 };
 

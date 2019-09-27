@@ -5,7 +5,7 @@ import useCountCommands from '../hooks/commands/useCountCommands';
 
 function Count() {
   const count = useCountState();
-  const { incrementCount } = useCountCommands();
+  const { incrementCount, decrementCount } = useCountCommands();
 
   return (
     <div>
@@ -15,6 +15,12 @@ function Count() {
         onClick={incrementCount}
       >
         Increment 
+      </button>
+
+      <button
+        onClick={decrementCount}
+      >
+        Decrement 
       </button>
 
       <br />
